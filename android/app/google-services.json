@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "953871479067",
+    "project_id": "kambaii-innovation-354817",
+    "storage_bucket": "kambaii-innovation-354817.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:953871479067:android:dcf0835093954e9a7ba3be",
+        "android_client_info": {
+          "package_name": "com.kambaii.innovation"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "953871479067-20mpt3r2b3igd0kd001pk0rl68o79cqj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.kambaii.innovation",
+            "certificate_hash": "e4b1d468b4a3edb1962a1e029b8d4aaebd5b6166"
+          }
+        },
+        {
+          "client_id": "953871479067-phgg245oghhpi731qa72ci5i8fc46ht9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbc-dNyaAy9gC9svrqny7wtTyFxQuj9Gg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "953871479067-n452lqm13n564orm2mmk4cormgkl7m2r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
