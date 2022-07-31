@@ -46,7 +46,7 @@ class TeamMemberUpdateScreen extends StatelessWidget {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text("Update Team Members",style: TextStyle(color: AppColors.mainColorBlack,fontSize: 20,fontWeight: FontWeight.w500),),
+                            Text("Update Team Members",style: TextStyle(color: AppColors.mainColorBlack,fontSize: 18,fontWeight: FontWeight.w500),),
                             CridUsaLogoLayout().cridLogo(80, Alignment.topRight)
                             // Image(image: AssetImage("images/student.png"))
                           ],

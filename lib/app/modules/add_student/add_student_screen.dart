@@ -51,7 +51,7 @@ class AddStudentScreen extends StatelessWidget {
                               const SizedBox(
                                 width: 8,
                               ),
-                              Text("Add ${controller.homeController.getButtonText()}",style: TextStyle(color: AppColors.mainColorBlack,fontSize: 20,fontWeight: FontWeight.w500),),
+                              Text("Add ${controller.homeController.getButtonText()}",style: TextStyle(color: AppColors.mainColorBlack,fontSize: 18,fontWeight: FontWeight.w500),),
                               const Spacer(),
                               CridUsaLogoLayout().cridLogo(80, Alignment.topRight)
                               // Image(image: AssetImage("images/student.png"))

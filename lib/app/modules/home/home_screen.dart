@@ -136,13 +136,15 @@ class HomeScreen extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children:[
-                                const Image(
-                                  image: AssetImage("images/crid_usa.png"),
+                                Image(
+                                  image: const AssetImage("images/innovation_hori_logo.png"),
                                   height: 120,
+                                  width: MediaQuery.of(context).size.width * 0.5,
                                 ),
                                 Image(
                                   image: AssetImage("images/${controller.getUserTypePic()}.png"),
                                   height: 120,
+                                  width: 80,
                                 ),
                               ],
                             ),
@@ -165,39 +167,6 @@ class HomeScreen extends StatelessWidget {
                                   mainAxisSpacing: 30,
                                   crossAxisCount: 2,
                                   children: [
-                                    Material(
-                                        color: Colors.white,
-                                        elevation: 3,
-                                        borderRadius: BorderRadius.circular(10.0),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            try {
-                                              final result =
-                                              await InternetAddress.lookup('example.com');
-                                              if (result.isNotEmpty &&
-                                                  result[0].rawAddress.isNotEmpty) {
-                                                // connected
-                                                if(controller.participantDataModel.data?.registrationStep == "step4"){
-                                                  Get.toNamed(Routes.MY_IDEAS,arguments: {"userId":"${MySharedPreference.userId}"});
-                                                } else {
-                                                  Common.toastMsg("You haven't submit any Idea");
-                                                  controller.getParticipantData();
-                                                  print("xxxxxxxxxxxxxxxxxxxxxx");
-                                                }
-
-                                              } else {
-                                                // not connected
-                                                Common.toastMsg("No Internet Connection");
-                                              }
-                                            } on SocketException catch (_) {
-                                              Common.toastMsg("No Internet Connection");
-                                            }
-                                          },
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          child: const ButtonCard2(
-                                              name: 'My Ideas',
-                                              image: "images/worry.png"),
-                                        )),
                                     Material(
                                         color: Colors.white,
                                         elevation: 3,
@@ -234,6 +203,38 @@ class HomeScreen extends StatelessWidget {
                                           child: const ButtonCard2(
                                               name: 'Add Idea',
                                               image: "images/plus.png"),
+                                        )),
+                                    Material(
+                                        color: Colors.white,
+                                        elevation: 3,
+                                        borderRadius: BorderRadius.circular(10.0),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            try {
+                                              final result =
+                                              await InternetAddress.lookup('example.com');
+                                              if (result.isNotEmpty &&
+                                                  result[0].rawAddress.isNotEmpty) {
+                                                // connected
+                                                if(controller.participantDataModel.data?.registrationStep == "step4"){
+                                                  Get.toNamed(Routes.MY_IDEAS,arguments: {"userId":"${MySharedPreference.userId}"});
+                                                } else {
+                                                  Common.toastMsg("You haven't submit any Idea");
+                                                  controller.getParticipantData();
+                                                }
+
+                                              } else {
+                                                // not connected
+                                                Common.toastMsg("No Internet Connection");
+                                              }
+                                            } on SocketException catch (_) {
+                                              Common.toastMsg("No Internet Connection");
+                                            }
+                                          },
+                                          borderRadius: BorderRadius.circular(10.0),
+                                          child: const ButtonCard2(
+                                              name: 'My Ideas',
+                                              image: "images/worry.png"),
                                         )),
                                     Material(
                                         color: Colors.white,
@@ -365,42 +366,10 @@ class HomeScreen extends StatelessWidget {
                                               await InternetAddress.lookup('example.com');
                                               if (result.isNotEmpty &&
                                                   result[0].rawAddress.isNotEmpty) {
-                                                // ..... Check update full data fill or not........
-                                                if(controller.isReadyForIdeaSubmit()){
-                                                  Get.toNamed(Routes.IDEA_TYPE_CHOOSE);
-                                                } else {
-                                                  Get.toNamed(Routes.STUDENT_LIST);
-                                                  // Get.toNamed(Routes.STUDENT_PROFILE_UPDATE);
-                                                }
-                                              } else {
-                                                // not connected
-                                                Common.toastMsg("No Internet Connection");
-                                              }
-                                            } on SocketException catch (_) {
-                                              Common.toastMsg("No Internet Connection");
-                                            }
-                                          },
-                                          borderRadius: BorderRadius.circular(10.0),
-                                          child: const ButtonCard2(
-                                              name: 'Add Idea',
-                                              image: "images/plus.png"),
-                                        )),
-                                    Material(
-                                        color: Colors.white,
-                                        elevation: 3,
-                                        borderRadius: BorderRadius.circular(10.0),
-                                        child: InkWell(
-                                          onTap: () async {
-                                            try {
-                                              final result =
-                                              await InternetAddress.lookup('example.com');
-                                              if (result.isNotEmpty &&
-                                                  result[0].rawAddress.isNotEmpty) {
                                                 // connected
-                                                print("${MySharedPreference.userId}");
-                                                print("${MySharedPreference.token}");
-                                                Get.toNamed(Routes.NOTICE);
-                                              } else {
+                                                // print("${MySharedPreference.userId}");
+                                                Get.toNamed(Routes.ADD_STUDENT);
+                                              }else {
                                                 // not connected
                                                 Common.toastMsg("No Internet Connection");
                                               }
@@ -409,10 +378,10 @@ class HomeScreen extends StatelessWidget {
                                             }
                                           },
                                           borderRadius: BorderRadius.circular(10.0),
-                                          child: const ButtonCard2(
-                                              name: 'Notice', image: "images/noticeboard2.png"),
+                                          child: ButtonCard2(
+                                              name: 'Add ${controller.getButtonText()}',
+                                              image: "images/graduate.png"),
                                         )),
-
                                     Material(
                                         color: Colors.white,
                                         elevation: 3,
@@ -450,10 +419,14 @@ class HomeScreen extends StatelessWidget {
                                               await InternetAddress.lookup('example.com');
                                               if (result.isNotEmpty &&
                                                   result[0].rawAddress.isNotEmpty) {
-                                                // connected
-                                                // print("${MySharedPreference.userId}");
-                                                Get.toNamed(Routes.ADD_STUDENT);
-                                              }else {
+                                                // ..... Check update full data fill or not........
+                                                if(controller.isReadyForIdeaSubmit()){
+                                                  Get.toNamed(Routes.IDEA_TYPE_CHOOSE);
+                                                } else {
+                                                  Get.toNamed(Routes.STUDENT_LIST);
+                                                  // Get.toNamed(Routes.STUDENT_PROFILE_UPDATE);
+                                                }
+                                              } else {
                                                 // not connected
                                                 Common.toastMsg("No Internet Connection");
                                               }
@@ -462,9 +435,62 @@ class HomeScreen extends StatelessWidget {
                                             }
                                           },
                                           borderRadius: BorderRadius.circular(10.0),
-                                          child: ButtonCard2(
-                                              name: 'Add ${controller.getButtonText()}',
-                                              image: "images/graduate.png"),
+                                          child: const ButtonCard2(
+                                              name: 'Add Idea',
+                                              image: "images/plus.png"),
+                                        )),
+                                    Material(
+                                      color: Colors.white,
+                                      elevation: 3,
+                                      borderRadius: BorderRadius.circular(10.0),
+                                      child: InkWell(
+                                        onTap: () async {
+                                          try {
+                                            final result =
+                                            await InternetAddress.lookup('example.com');
+                                            if (result.isNotEmpty &&
+                                                result[0].rawAddress.isNotEmpty) {
+                                              // connected
+                                              Get.toNamed(Routes.STUDENT_PROFILE);
+                                            } else {
+                                              // not connected
+                                              Common.toastMsg("No Internet Connection");
+                                            }
+                                          } on SocketException catch (_) {
+                                            Common.toastMsg("No Internet Connection");
+                                          }
+                                        },
+                                        borderRadius: BorderRadius.circular(10.0),
+                                        child: const ButtonCard2(
+                                            name: 'Profile', image: "images/user.png"),
+                                      ),
+                                    ),
+                                    Material(
+                                        color: Colors.white,
+                                        elevation: 3,
+                                        borderRadius: BorderRadius.circular(10.0),
+                                        child: InkWell(
+                                          onTap: () async {
+                                            try {
+                                              final result =
+                                              await InternetAddress.lookup('example.com');
+                                              if (result.isNotEmpty &&
+                                                  result[0].rawAddress.isNotEmpty) {
+                                                // connected
+                                                print("${MySharedPreference.userId}");
+                                                print("${MySharedPreference.token}");
+                                                Get.toNamed(Routes.NOTICE);
+                                              } else {
+                                                // not connected
+                                                Common.toastMsg("No Internet Connection");
+                                              }
+                                            } on SocketException catch (_) {
+                                              Common.toastMsg("No Internet Connection");
+                                            }
+                                          },
+                                          borderRadius: BorderRadius.circular(10.0),
+                                          child: const ButtonCard2(
+                                              name: 'Notice', image: "images/noticeboard2.png"),
                                         )),
                                     // Material(
                                     //     color: Colors.white,
@@ -517,32 +543,6 @@ class HomeScreen extends StatelessWidget {
                                     //           name: 'Institute',
                                     //           image: "images/icon_institute.png"),
                                     //     )),
-                                    Material(
-                                      color: Colors.white,
-                                      elevation: 3,
-                                      borderRadius: BorderRadius.circular(10.0),
-                                      child: InkWell(
-                                        onTap: () async {
-                                          try {
-                                            final result =
-                                            await InternetAddress.lookup('example.com');
-                                            if (result.isNotEmpty &&
-                                                result[0].rawAddress.isNotEmpty) {
-                                              // connected
-                                              Get.toNamed(Routes.STUDENT_PROFILE);
-                                            } else {
-                                              // not connected
-                                              Common.toastMsg("No Internet Connection");
-                                            }
-                                          } on SocketException catch (_) {
-                                            Common.toastMsg("No Internet Connection");
-                                          }
-                                        },
-                                        borderRadius: BorderRadius.circular(10.0),
-                                        child: const ButtonCard2(
-                                            name: 'Profile', image: "images/user.png"),
-                                      ),
-                                    ),
                                     Material(
                                         color: Colors.white,
                                         elevation: 3,

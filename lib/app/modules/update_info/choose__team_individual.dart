@@ -26,14 +26,16 @@ class ChooseTeamOrIndividual extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const[
+                children: [
                   Image(
-                    image: AssetImage("images/crid_usa.png"),
+                    image: const AssetImage("images/innovation_hori_logo.png"),
                     height: 100,
+                    width: MediaQuery.of(context).size.width * 0.5,
                   ),
                   Image(
-                    image: AssetImage("images/teacher.png"),
+                    image: const AssetImage("images/teacher.png"),
                     height: 100,
+                    width: 80,
                   ),
                 ],
               ),

@@ -53,7 +53,7 @@ class AddGuardianScreen extends StatelessWidget {
                               const SizedBox(
                                 width: 8,
                               ),
-                              Text("Add Guardian",style: TextStyle(color: AppColors.mainColorBlack,fontSize: 20,fontWeight: FontWeight.w500),),
+                              Text("Add Guardian",style: TextStyle(color: AppColors.mainColorBlack,fontSize: 18,fontWeight: FontWeight.w500),),
                               const Spacer(),
                               CridUsaLogoLayout().cridLogo(80, Alignment.topRight)
                               // Image(image: AssetImage("images/student.png"))

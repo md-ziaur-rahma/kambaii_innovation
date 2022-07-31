@@ -16,11 +16,12 @@ class SplashScreen extends StatelessWidget {
           return Column(
             mainAxisSize: MainAxisSize.max,
             children: [
-              const Expanded(
+              Expanded(
                 flex: 1,
                 child: Image(
-                  image: AssetImage("images/crid_usa.png"),
+                  image: const AssetImage("images/innovation_hori_logo.png"),
                   height: 120,
+                  width: MediaQuery.of(context).size.width * 0.6,
                 ),
               ),
               Expanded(
